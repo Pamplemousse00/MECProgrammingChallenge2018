@@ -23,7 +23,7 @@
         ctx = canv.getContext("2d");
         
         getValue();
-        setInterval(getValue, 1000);
+        setInterval(getValue, 500);
        main();
 		
     }
@@ -384,16 +384,13 @@ window.speechSynthesis.speak(msg);
     });
  } 
        
-   
     
-    function sendLetter(){
-       $.ajax({
-        type: "POST",
-        data :JSON.stringify(letter),
-        url: "/send",
-        contentType: "application/json"
+function sendLetter(){
+    $.post("api", letter, function(){
+        
     });
-    }
+}    
+
     
     
     </script>

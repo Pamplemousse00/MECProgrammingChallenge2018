@@ -20,15 +20,11 @@ def index():
 def getData():
 	return jsonify(dictSend)
 
-@app.route("/send", methods=['POST'])
-def send():
-	data = request.get_json()
-	words = predictions.makePrediction(str(data))
-	global dictSend
-
-	dictSend = {'word1': words[0], 'word2': words[1], 'word3': words[2], 'word4': words[3],'word5': words[4]}
-	print(dictSend)
-	return 'OK'
+@app.route('/api', methods = ['POST'])
+def api():
+  data = request.get_json()
+  result = ''
+  predictions.makePrediction(str(data));
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0')
