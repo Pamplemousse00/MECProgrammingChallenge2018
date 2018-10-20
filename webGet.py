@@ -2,7 +2,11 @@ from flask import Flask, render_template, jsonify
 import predictions
 from predictions import *
 
+predictions.startup();
+
+
 predictions.makePredictions('f');
+
 
 
 word1 = "test1"
