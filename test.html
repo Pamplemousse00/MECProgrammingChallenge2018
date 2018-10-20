@@ -1,6 +1,9 @@
 <html>
     
     <canvas id="gc" width="800" height="400"></canvas>
+    
+    
+    <body id="body"></body>
 <script>
     
     window.onload = function(){
@@ -10,7 +13,12 @@ window.speechSynthesis.speak(msg);
         */
         
         
-        document.addEventListener('touchmove', touchMove(event));
+        var canv = document.getElementById("gc");
+  canv.addEventListener("touchstart", handleStart, false);
+  canv.addEventListener("touchend", handleEnd, false);
+  canv.addEventListener("touchcancel", handleCancel, false);
+  canv.addEventListener("touchmove", handleMove, false);
+        
         canv = document.getElementById("gc");
         ctx = canv.getContext("2d");
         
@@ -22,12 +30,12 @@ window.speechSynthesis.speak(msg);
     var mouseY;
     var mouseX;
    
-
+    
 
     
     
     function main(){
-                mouseX = touch.pageX;
+     mouseX = touch.pageX;
         mouseY = touch.pageY;
         ctx.fillRect(mouseX - 20, mouseY - 20, 20, 20);
         
