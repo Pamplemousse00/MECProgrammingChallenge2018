@@ -7,7 +7,7 @@ predictions.startup();
 
 predictions.makePredictions('f');
 
-
+#if get tildae, run predictions.flushPredictions
 
 word1 = "test1"
 word2 = "test2"
