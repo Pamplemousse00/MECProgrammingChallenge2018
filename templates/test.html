@@ -50,8 +50,10 @@ function mouseMove(event){
     mouseX = event.clientX;
     mouseY = event.clientY;
 	
-	if((mouseX <= 700 && mouseX >= 600) && (mouseY >= 300 && mouseY <= 400)){
+	ctx.lineWidth = "1";
+	ctx.strokeStyle = "black";
 	ctx.font = "40px Arial";
+<<<<<<< HEAD
 	ctx.fillStyle = "black";
 	ctx.fillText("A", 350, 140);
 	ctx.fillText("B", 450, 140);
@@ -64,6 +66,26 @@ function mouseMove(event){
     ctx.fillText(testWord, 1050, 140);
 	ctx.fillStyle = "white";
 	ctx.rect(650,350,150,150); 
+=======
+	ctx.fillStyle = "black"; 
+	
+	ctx.rect(0, 700, 1200, 50);  
+	ctx.stroke(); 
+	
+	
+	if((mouseX <= 725 && mouseX >= 575) && (mouseY >= 270 && mouseY <= 420)){ //FIXX POSITION
+	ctx.fillText("A      B      C      D      E      F      G", 360, 140);
+	
+	ctx.rect(350, 100, 50, 50);  
+	ctx.rect(440, 100, 50, 50); 
+	ctx.rect(535, 100, 50, 50);  
+	ctx.rect(630, 100, 50, 50);
+	ctx.rect(720, 100, 50, 50);  
+	ctx.rect(815, 100, 50, 50);  
+	ctx.rect(910, 100, 50, 50);  
+  	
+	ctx.stroke(); 
+>>>>>>> a8ce75dd67cf23273da213f356971c37fb93af80
 	
 	}
 
