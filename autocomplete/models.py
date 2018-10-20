@@ -2,25 +2,19 @@
 This file contains the process where we train our predictive models, Also
 helpful are the load_models and save_models functions.
 """
-
 import os
-
 import collections
-
 import pickle
-
 from . import helpers
 
 WORDS = []
-
 WORD_TUPLES = []
-
-WORDS_MODEL = {}
-
+WORDS_MODEL = collections.Counter()
 WORD_TUPLES_MODEL = {}
 
 #This step is where we transform "raw" data
 # into some sort of probabilistic model(s)
+
 def train_models(corpus, model_name="models_compressed.pkl"):
     """Takes in a preferably long string (corpus/training data),
     split that string into a list, we \"chunkify\" resulting in
@@ -64,7 +58,6 @@ def train_models(corpus, model_name="models_compressed.pkl"):
 def train_bigtxt():
     """unnecessary helper function for training against
     default corpus data (big.txt)"""
-
     bigtxtpath = os.path.join(os.path.dirname(__file__), 'big.txt')
     with open(bigtxtpath, 'rb') as bigtxtfile:
 
