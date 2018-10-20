@@ -1,9 +1,9 @@
 <html>
     
-    <canvas id="gc" width="800" height="400"></canvas>
+    <canvas id="gc" width="1200" height="600"></canvas>
     
     
-    <body id="body"></body>
+    
 <script>
     
     window.onload = function(){
@@ -11,35 +11,29 @@
 window.speechSynthesis.speak(msg);
         
         */
-        
-        
-        var canv = document.getElementById("gc");
-  canv.addEventListener("touchstart", handleStart, false);
-  canv.addEventListener("touchend", handleEnd, false);
-  canv.addEventListener("touchcancel", handleCancel, false);
-  canv.addEventListener("touchmove", handleMove, false);
-        
+ 
         canv = document.getElementById("gc");
         ctx = canv.getContext("2d");
         
         setInterval(main, 1000/30);
-        
-        
+
     }
-    
-    var mouseY;
-    var mouseX;
-   
     
 
+function main(){
+            ctx.fillStyle = "black";
+      ctx.beginPath();
+        ctx.arc(600,350,50,0,2*Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.font = "150px Arial";
+        ctx.fillText(String.fromCharCode(9650), 525, 270);
+    ctx.fillText(String.fromCharCode(9650), 525, 270);
+    ctx.fillText(String.fromCharCode(9650), 525, 270);
+    ctx.fillText(String.fromCharCode(9650), 525, 270);
     
-    
-    function main(){
-     mouseX = touch.pageX;
-        mouseY = touch.pageY;
-        ctx.fillRect(mouseX - 20, mouseY - 20, 20, 20);
-        
-    }
+}
+  
     
 
     
