@@ -17,32 +17,47 @@ window.speechSynthesis.speak(msg);
         ctx = canv.getContext("2d");
         
         setInterval(main, 1000/30);
-
     }
     
-
 function main(){
-            ctx.fillStyle = "black";
+	
+      ctx.fillStyle = "black";
       ctx.beginPath();
-        ctx.arc(750,350,50,0,2*Math.PI);
+        ctx.arc(650,350,50,0,2*Math.PI); //circle 
         ctx.fill();
         ctx.beginPath();
         ctx.font = "150px Arial";
-        ctx.fillText(String.fromCharCode(9650), 675, 270);
-    ctx.fillText(String.fromCharCode(9654), 820, 400);
-    ctx.fillText(String.fromCharCode(9660), 675, 530);
-    ctx.fillText(String.fromCharCode(9664), 550, 400);
+        ctx.fillText(String.fromCharCode(9650), 575, 270); //up traingle 
+    ctx.fillText(String.fromCharCode(9654), 720, 400); // right triangle 
+    ctx.fillText(String.fromCharCode(9660), 575, 530); // down triangle
+    ctx.fillText(String.fromCharCode(9664), 450, 400); // left triangle 
     
 }
   
     var mouseX;
     var mouseY;
-    
-    
+	
+
 function mouseMove(event){
     
     mouseX = event.clientX;
-    mouseY = event.mouseY;
+    mouseY = event.clientY;
+	
+	if((mouseX <= 700 && mouseX >= 600) && (mouseY >= 300 && mouseY <= 400)){
+	ctx.font = "40px Arial";
+	ctx.fillStyle = "black";
+	ctx.fillText("A", 350, 140);
+	ctx.fillText("B", 450, 140);
+	ctx.fillText("C", 550, 140);
+	ctx.fillText("D", 650, 140);
+	ctx.fillText("E", 750, 140);
+	ctx.fillText("F", 850, 140);
+	ctx.fillText("G", 950, 140);
+	ctx.fillStyle = "white";
+	ctx.rect(650,350,150,150); 
+	
+	}
+
 }
     
     
