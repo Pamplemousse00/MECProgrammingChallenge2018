@@ -10,7 +10,7 @@ window.speechSynthesis.speak(msg);
         */
         
         
-        document.onmousemove = mouseMove;
+        document.addEventListener('touchmove', touchMove(event));
         canv = document.getElementById("gc");
         ctx = canv.getContext("2d");
         
@@ -21,18 +21,19 @@ window.speechSynthesis.speak(msg);
     
     var mouseY;
     var mouseX;
-    function mouseMove(event){
-        
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-    }
+   
+
+
+    
     
     function main(){
-        
+                mouseX = touch.pageX;
+        mouseY = touch.pageY;
         ctx.fillRect(mouseX - 20, mouseY - 20, 20, 20);
         
     }
     
+
     
     
     
