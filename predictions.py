@@ -1,7 +1,7 @@
 import autocomplete
 from autocomplete import models
 
-DEFAULTPREDICTION = ['the', 'hello', 'oh yeah', 'wow', '~']
+DEFAULTPREDICTION = ['the', 'hello', 'oh yeah', 'wow', 'EMERGENCY']
 lastWord = ''
 currentWord = ''
 
@@ -10,18 +10,23 @@ def startup():
     autocomplete.load()
     return DEFAULTPREDICTION
 
+
+
+
 def makePrediction(character):
     global lastWord
     global currentWord
     #update lastWord, currentWord, lastString
-    if(character == ' '):
+    if(character != ' ' and lastWord == ''):
+        currentWord += character
+        return DEFAULTPREDICTION
+    elif character == ' ' and currentWord != '':
         lastWord = currentWord
         currentWord = ''
+        return pasturizeList(autocomplete.predict(lastWord, currentWord))
     else:
         currentWord += character
-    wordList = pasturizeList(autocomplete.predict(lastWord, currentWord))
-    
-    return wordList
+        return  pasturizeList(autocomplete.predict(lastWord, currentWord))
 
 def flushPredictions():
     global lastString
