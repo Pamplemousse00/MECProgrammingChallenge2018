@@ -12,12 +12,11 @@ def startup():
 
 
 
-
 def makePrediction(character):
     global lastWord
     global currentWord
     #update lastWord, currentWord, lastString
-    if(character != ' ' and lastWord == ''):
+    if(lastWord == '' and character != ' '):
         currentWord += character
         return DEFAULTPREDICTION
     elif character == ' ' and currentWord != '':
@@ -27,7 +26,6 @@ def makePrediction(character):
     else:
         currentWord += character
         return  pasturizeList(autocomplete.predict(lastWord, currentWord))
-
 def flushPredictions():
     global lastString
     global lastWord
