@@ -39,28 +39,13 @@ free to send me any questions and comments to my email: rodrigopala91@gmail.com
 Cheers,
 Rodrigo
 """
-
-from bottle import route, run, debug
-
 from collections import Counter
 
 from . import helpers
 
 from . import models
 
-
-def run_server(port_num=8080):
-    """little demo server for demo'ing sake"""
-    models.load_models()
-
-    debug(True)
-
-    @route('/<wordA>/<wordB>')
-    def index(wordA, wordB):
-        return  dict(predict(wordA, wordB))
-
-    run(host='localhost', port=port_num)
-
+PREDICTEDWORDS = 5
 
 def load():
     """load the classic Norvig big.txt corpus"""
@@ -73,7 +58,7 @@ def load():
     return True
 
 
-def predict_currword(word, top_n=10):
+def predict_currword(word, top_n= PREDICTEDWORDS):
     """given a word, return top n suggestions based off frequency of words
     prefixed by said input word"""
     try:
@@ -84,7 +69,7 @@ def predict_currword(word, top_n=10):
                         \n\tautocomplete.load()")
 
 
-def predict_currword_given_lastword(first_word, second_word, top_n=10):
+def predict_currword_given_lastword(first_word, second_word, top_n=PREDICTEDWORDS):
     """given a word, return top n suggestions determined by the frequency of
     words prefixed by the input GIVEN the occurence of the last word"""
     return Counter({w:c for w, c in
@@ -92,7 +77,7 @@ def predict_currword_given_lastword(first_word, second_word, top_n=10):
                     if w.startswith(second_word.lower())}).most_common(top_n)
 
 
-def predict(first_word, second_word, top_n=10):
+def predict(first_word, second_word, top_n=PREDICTEDWORDS):
     """given some text, we [r]split last two words (if possible) and call
     predict_currword or predict_currword_given_lastword to retrive most n
     probable suggestions.
@@ -110,7 +95,7 @@ def predict(first_word, second_word, top_n=10):
                         \n\tautocomplete.load()")
 
 
-def split_predict(text, top_n=10):
+def split_predict(text, top_n=PREDICTEDWORDS):
     """takes in string and will right split accordingly.
     Optionally, you can provide keyword argument "top_n" for
     choosing the number of suggestions to return."""
