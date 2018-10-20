@@ -1,26 +1,19 @@
 from flask import Flask, render_template, jsonify
-import predictions
-from predictions import *
 
-predictions.startup();
-
-
-predictions.makePredictions('f');
 
 #if get tildae, run predictions.flushPredictions
 
-word1 = "test1"
-word2 = "test2"
-word3 = "test3"
+word1 = "yousef"
 
-dictSend = {'word1': word1, 'word2': word2, 'word3': word3}
+
+dictSend = {'word1': word1}
 
 app = Flask(__name__)
 
 @app.route('/')
 
 def index():
-	return render_template('./test.html')
+	return render_template('test.html')
 
 @app.route("/getData", methods=['GET'])
 def getData():
