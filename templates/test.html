@@ -1,29 +1,19 @@
 <html>
     
-    <canvas id="gc" width="1200" height="600"></canvas>
+    <canvas id="gc" width="1300" height="800"></canvas>
     
      <script type=text/javascript src="{{
   url_for('static', filename='jquery.js') }}"></script>
     
 <script>
     
-    var testWord = "no";
+      var word1;
+    var word2;
+    var word3;
+    var word4;
+    var word5;
     
-   function thing() {
-    var val = 1;
-    var entry1 = 3;
-    $.getJSON({
-    url: "/getData",
-    data: { entry2_id: val, entry1_id: entry1 },
-    success: function(data){
-        testWord = data.val;
-        
-    }
-    });
- } 
-        
-setInterval(thing, 1000);
-
+    var topText = "";
     
     window.onload = function(){
   /*   var msg = new SpeechSynthesisUtterance('Hello World');
@@ -35,8 +25,10 @@ window.speechSynthesis.speak(msg);
         canv = document.getElementById("gc");
         ctx = canv.getContext("2d");
         
-        setInterval(main, 1000/30);
-        setInterval(thing, 1000);
+        getValue();
+        setInterval(getValue, 500);
+       main();
+		
     }
     
 function main(){
@@ -52,6 +44,35 @@ function main(){
     ctx.fillText(String.fromCharCode(9660), 575, 530); // down triangle
     ctx.fillText(String.fromCharCode(9664), 450, 400); // left triangle 
     
+    	ctx.lineWidth = "1";
+	ctx.strokeStyle = "black";
+	ctx.font = "40px Arial";
+	ctx.fillStyle = "black"; 
+	
+	ctx.rect(0, 700, 1300, 50);  
+    ctx.rect(0, 0, 1300, 50); 
+	ctx.moveTo(260,700);
+	ctx.lineTo(260,750);
+	ctx.stroke(); 
+    
+    
+    
+	
+	ctx.moveTo(520,700);
+	ctx.lineTo(520,750);
+	ctx.stroke(); 
+	
+	ctx.moveTo(780,700);
+	ctx.lineTo(780,750);
+	ctx.stroke(); 
+	
+	ctx.moveTo(1040,700);
+	ctx.lineTo(1040,750);
+	ctx.stroke();
+	
+
+	
+    
 }
   
     var mouseX;
@@ -62,14 +83,6 @@ function mouseMove(event){
     
     mouseX = event.clientX;
     mouseY = event.clientY;
-	
-	ctx.lineWidth = "1";
-	ctx.strokeStyle = "black";
-	ctx.font = "40px Arial";
-	ctx.fillStyle = "black"; 
-	
-	ctx.rect(0, 700, 1200, 50);  
-	ctx.stroke(); 
 	
 	
 	if((mouseX <= 725 && mouseX >= 575) && (mouseY >= 270 && mouseY <= 420)){ //FIXX POSITION
@@ -84,11 +97,96 @@ function mouseMove(event){
 	ctx.rect(910, 100, 50, 50);  
   	
 	ctx.stroke(); 
-	
 	}
+	
+	
+	if((mouseX <= 725 && mouseX >= 575) && (mouseY >= 270 && mouseY <= 420)){ //FIXX POSITION
+	ctx.fillText("T      U      V      W      X      Y      Z", 360, 590);
+	
+	ctx.rect(350, 550, 50, 50);  
+	ctx.rect(440, 550, 50, 50); 
+	ctx.rect(535, 550, 50, 50);  
+	ctx.rect(630, 550, 50, 50);
+	ctx.rect(730, 550, 50, 50);  
+	ctx.rect(825, 550, 50, 50);  
+	ctx.rect(920, 550, 50, 50);  
+  	
+	ctx.stroke(); 
+	}
+	
+	if((mouseX <= 725 && mouseX >= 575) && (mouseY >= 270 && mouseY <= 420)){ //FIXX POSITION
+	ctx.fillText("H    I     J     K     L     M", 10, 360);
+	
+	ctx.rect(0, 320, 50, 50);  
+	ctx.rect(70, 320, 50, 50); 
+	ctx.rect(140, 320, 50, 50);  
+	ctx.rect(220, 320, 50, 50);
+	ctx.rect(290, 320, 50, 50);  
+	ctx.rect(380, 320, 50, 50);  
+	
+  	
+	ctx.stroke(); 
+	}
+    
+    if(mouseY > 700){
+        if(mouseX >0 && mouseX < 260){
+            topText = topText + word1 + " ";
+        }
+        if(mouseX > 260 && mouseX < 520){
+            topText = topText + word2 + " ";
+        }
+        if(mouseX > 520 && mouseX<780){
+            topText = topText + word3 + " ";
+        }
+        if(mouseX > 780 && mouseX < 1040){
+           topText = topText + word4 + " ";
+        }
+        if(mouseX > 1040 && mouseX < 1300){
+            topText = topText + word5 + " ";
+        }
+        
+        ctx.fillText(topText, 0, 50)
+    }
+	
+	if((mouseX <= 725 && mouseX >= 575) && (mouseY >= 270 && mouseY <= 420)){ //FIXX POSITION
+	ctx.fillText("N    O     P     Q     R     S", 860, 360);
+	
+	ctx.rect(850, 320, 50, 50);  
+	ctx.rect(920, 320, 50, 50); 
+	ctx.rect(140, 320, 50, 50);  
+	ctx.rect(220, 320, 50, 50);
+	ctx.rect(290, 320, 50, 50);  
+	ctx.rect(380, 320, 50, 50);    
+  	
+	ctx.stroke(); 
+	}
+	
 
 }
     
+    
+  
+    
+ function getValue() {
+
+    $.getJSON({
+    url: "/getData",
+    success: function(data){
+        word1 = data.word1;
+        ctx.fillText(word1, 80, 740);
+        word2 = data.word2;
+        ctx.fillText(word2, 340, 740);
+        word3 = data.word3;
+        ctx.fillText(word3, 600, 740);
+        word4 = data.word4;
+        ctx.fillText(word4, 860, 740);
+        word5 = data.word5;
+        ctx.fillText(word5, 1120, 740);
+    }
+    });
+ } 
+        
+
     
     
     </script>
