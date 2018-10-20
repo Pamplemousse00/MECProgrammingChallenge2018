@@ -3,10 +3,13 @@ from flask import Flask, render_template, jsonify
 
 #if get tildae, run predictions.flushPredictions
 
-word1 = "yousef"
+word1 = "test1"
+word2 = "test2"
+word3 = "test3"
+word4 = "test4"
+word5 = "test5"
 
-
-dictSend = {'word1': word1}
+dictSend = {'word1': word1, 'word2': word2, 'word3': word3, 'word4': word4, 'word5': word5}
 
 app = Flask(__name__)
 
