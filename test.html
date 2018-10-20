@@ -12,6 +12,7 @@ window.speechSynthesis.speak(msg);
         
         */
  
+        document.onmousemove = mouseMove;
         canv = document.getElementById("gc");
         ctx = canv.getContext("2d");
         
@@ -23,19 +24,26 @@ window.speechSynthesis.speak(msg);
 function main(){
             ctx.fillStyle = "black";
       ctx.beginPath();
-        ctx.arc(600,350,50,0,2*Math.PI);
+        ctx.arc(750,350,50,0,2*Math.PI);
         ctx.fill();
         ctx.beginPath();
         ctx.font = "150px Arial";
-        ctx.fillText(String.fromCharCode(9650), 525, 270);
-    ctx.fillText(String.fromCharCode(9654), 670, 400);
-    ctx.fillText(String.fromCharCode(9660), 525, 530);
-    ctx.fillText(String.fromCharCode(9664), 400, 400);
+        ctx.fillText(String.fromCharCode(9650), 675, 270);
+    ctx.fillText(String.fromCharCode(9654), 820, 400);
+    ctx.fillText(String.fromCharCode(9660), 675, 530);
+    ctx.fillText(String.fromCharCode(9664), 550, 400);
     
 }
   
+    var mouseX;
+    var mouseY;
     
-
+    
+function mouseMove(event){
+    
+    mouseX = event.clientX;
+    mouseY = event.mouseY;
+}
     
     
     
